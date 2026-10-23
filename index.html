@@ -725,8 +725,9 @@
             gap: 8px;
         }
 
+        /* УВЕЛИЧЕННЫЙ ШРИФТ ДЛЯ ФОРМЫ */
         .form-group label {
-            font-size: 14px;
+            font-size: 16px; 
             font-weight: 500;
             color: #3a3530;
         }
@@ -735,11 +736,11 @@
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 16px; 
             border: 1px solid rgba(90, 26, 27, 0.3);
             border-radius: 8px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 15px;
+            font-size: 16px; 
             background: #fff;
             outline: none;
             transition: border-color 0.3s ease;
@@ -767,26 +768,26 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 15px;
+            font-size: 16px; 
             cursor: pointer;
         }
 
         .radio-label input[type="radio"] {
             accent-color: #5a1a1b;
-            width: 18px;
-            height: 18px;
+            width: 20px; 
+            height: 20px;
             cursor: pointer;
         }
 
         .submit-btn {
             margin-top: 10px;
-            padding: 16px;
+            padding: 18px; 
             background-color: #5a1a1b;
             color: white;
             border: none;
             border-radius: 30px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
+            font-size: 18px; 
             font-weight: 500;
             letter-spacing: 1px;
             cursor: pointer;
@@ -805,7 +806,7 @@
         }
 
         .form-status {
-            font-size: 14px;
+            font-size: 15px;
             text-align: center;
             margin-top: 15px;
             font-weight: 500;
@@ -814,14 +815,14 @@
         .form-status.success { color: #2e7d32; }
         .form-status.error { color: #c62828; }
 
+        /* УВЕЛИЧЕННЫЙ ШРИФТ ДЛЯ ДЕДЛАЙНА */
         .rsvp-deadline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-style: italic;
+            font-size: 22px; /* Увеличили шрифт */
+            font-weight: 600;
             color: #5a1a1b;
             margin-top: 25px;
             text-align: center;
-            font-weight: 500;
         }
 
         /* =========================================
@@ -999,7 +1000,7 @@
             .rsvp-section { padding: 60px 15px; }
             .rsvp-container { padding: 40px 20px; }
             .rsvp-title { font-size: 42px; }
-            .rsvp-deadline { font-size: 16px; }
+            .rsvp-deadline { font-size: 20px; } /* Чуть меньше на телефонах, но крупнее чем было */
 
             .contacts-section { padding: 50px 15px; }
             .contacts-title { font-size: 38px; }
@@ -1057,7 +1058,6 @@
 
     <section class="invitation-text-section section-overlay">
         <div class="text-container">
-            <!-- СЮДА БУДЕТ ПОДСТАВЛЯТЬСЯ ИМЯ ИЗ ССЫЛКИ -->
             <h2 class="greeting-title">Дорогие<br><span id="guestNames">Константин и София</span></h2>
             
             <p class="invite-text">
@@ -1176,7 +1176,7 @@
 
                 <div class="event-block event-left">
                     <div>
-                        <div class="event-time">21:00</div>
+                        <div class="event-time">20:30</div> 
                         <div class="event-title">Свадебный торт</div>
                         <div class="event-desc">Самый долгожданный, красивый<br>и сладкий финал банкета</div>
                     </div>
@@ -1245,7 +1245,7 @@
                     г. Санкт-Петербург,<br>
                     ул. Доблести, 36 (строение 1)
                 </div>
-                <a href="https://yandex.ru/maps/?rtext=~Санкт-Петербург, улица Доблести, 36&rtt=auto" target="_blank" class="map-button">
+                <a href="https://yandex.ru/maps/?rtext=~Санкт-Петербург%2C%20улица%20Доблести%2C%2036&rtt=auto" target="_blank" class="map-button">
                     Построить маршрут
                 </a>
             </div>
@@ -1336,11 +1336,6 @@
                             <option value="4">4 человека</option>
                         </select>
                     </div>
-
-                    <div class="form-group" style="margin-top: 20px;">
-                        <label for="food">Пожелания по еде / аллергии</label>
-                        <textarea id="food" name="food" placeholder="Например: без мяса, аллергия на орехи..."></textarea>
-                    </div>
                     
                     <div class="form-group" style="margin-top: 20px;">
                         <label for="drinks">Предпочтения по напиткам</label>
@@ -1357,6 +1352,7 @@
                 <p id="formStatus" class="form-status"></p>
             </form>
 
+            <!-- ВОЗВРАЩЕНА СТРОКА С ДЕДЛАЙНОМ И УВЕЛИЧЕН ШРИФТ -->
             <p class="rsvp-deadline">Пожалуйста, ответьте на вопросы анкеты до 1 июня.</p>
 
         </div>
