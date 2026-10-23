@@ -971,16 +971,15 @@
 
             .program-title { font-size: 48px; }
             
-            /* ИСПРАВЛЕНИЕ ЛИНИИ И СЕРДЕЧКА НА МОБИЛЬНЫХ */
             .timeline-svg {
-                left: 10px; /* Прижимаем линию к левому краю */
+                left: 10px; 
                 transform: none;
-                width: 50px; /* Делаем линию узкой, чтобы она не залезала на текст */
+                width: 50px; 
             }
             .event-block {
                 width: 100%;
                 text-align: left !important;
-                padding: 10px 10px 10px 75px !important; /* Сдвигаем текст правее от линии */
+                padding: 10px 10px 10px 75px !important; 
                 margin-left: 0 !important;
                 margin-right: 0 !important;
                 margin-bottom: 30px;
@@ -1058,7 +1057,9 @@
 
     <section class="invitation-text-section section-overlay">
         <div class="text-container">
-            <h2 class="greeting-title">Дорогие<br>Константин и София</h2>
+            <!-- СЮДА БУДЕТ ПОДСТАВЛЯТЬСЯ ИМЯ ИЗ ССЫЛКИ -->
+            <h2 class="greeting-title">Дорогие<br><span id="guestNames">Константин и София</span></h2>
+            
             <p class="invite-text">
                 Совсем скоро состоится очень важное и радостное для нас событие — наша свадьба. Этот день невозможно представить без самых близких для нас людей, мы бы очень хотели, чтобы вы провели его вместе с нами.<br><br>
                 С нетерпением ждем вас!
@@ -1201,7 +1202,6 @@
                 Приходите с лёгким сердцем и отличным настроением — ведь только вместе мы создадим ту самую волшебную атмосферу, которая запомнится на всю жизнь!
             </p>
 
-            <!-- ФОТО ПАРЫ -->
             <img src="couple.jpg" alt="Иван и Милена" class="couple-photo" onerror="this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop'">
 
             <div class="heart-divider">♥</div>
@@ -1424,6 +1424,13 @@
     </section>
 
     <script>
+        // ЛОГИКА ПЕРСОНАЛИЗАЦИИ ИМЕН (Читает имя из ссылки)
+        const urlParams = new URLSearchParams(window.location.search);
+        const namesParam = urlParams.get('names');
+        if (namesParam) {
+            document.getElementById('guestNames').innerText = namesParam;
+        }
+
         const openBtn = document.getElementById('openBtn');
         const teaser = document.getElementById('teaser');
         const mainInvite = document.getElementById('main-invite');
