@@ -23,9 +23,6 @@
             overflow-x: hidden;
         }
 
-        /* =========================================
-           ВИДЕО-ФОН (НА ВЕСЬ ЭКРАН)
-           ========================================= */
         .video-background {
             position: fixed;
             top: 0;
@@ -48,9 +45,6 @@
             pointer-events: none;
         }
 
-        /* =========================================
-           ПЛАВАЮЩЕЕ СЕРДЕЧКО
-           ========================================= */
         .floating-heart {
             position: absolute; 
             width: 65px; 
@@ -90,9 +84,6 @@
             text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* =========================================
-           ЭКРАН 1: ОБЛОЖКА (С ДВУМЯ СЕРДЦАМИ)
-           ========================================= */
         #teaser {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
@@ -165,9 +156,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* =========================================
-           ЭКРАН 2: ГЛАВНОЕ ПРИГЛАШЕНИЕ
-           ========================================= */
         #main-invite {
             position: relative;
             min-height: 100vh;
@@ -222,18 +210,12 @@
             color: #5a1a1b;
         }
 
-        /* =========================================
-           ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ
-           ========================================= */
         .section-overlay {
             position: relative;
             background-color: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(3px); 
         }
 
-        /* =========================================
-           ТЕКСТ ПРИГЛАШЕНИЯ
-           ========================================= */
         .invitation-text-section {
             padding: 100px 20px;
         }
@@ -255,7 +237,7 @@
             color: #5a1a1b;
             margin-bottom: 40px;
             line-height: 1.4;
-            text-transform: uppercase;
+            /* Убрали text-transform: uppercase, чтобы имена выглядели красиво */
         }
 
         .invite-text {
@@ -265,9 +247,6 @@
             font-weight: 400;
         }
 
-        /* =========================================
-           ПРОГРАММА ДНЯ
-           ========================================= */
         .program-section {
             padding: 80px 20px;
             overflow: hidden;
@@ -288,7 +267,6 @@
             margin-bottom: 40px;
         }
 
-        /* КАЛЕНДАРЬ */
         .styled-calendar {
             text-align: center;
             color: #2a2520;
@@ -354,7 +332,6 @@
             animation: heartbeat-calendar 1.5s ease-in-out infinite;
         }
 
-        /* ТАЙМЛАЙН */
         .timeline {
             position: relative;
             padding: 20px 0;
@@ -436,9 +413,6 @@
             color: #555;
         }
 
-        /* =========================================
-           ДЕТАЛИ ДНЯ (С ФОТО)
-           ========================================= */
         .details-section {
             padding: 100px 20px;
             text-align: center;
@@ -483,9 +457,6 @@
             border: 8px solid #fff; 
         }
 
-        /* =========================================
-           ДРЕСС-КОД
-           ========================================= */
         .dresscode-section {
             padding: 100px 20px;
             text-align: center;
@@ -513,7 +484,6 @@
             margin-bottom: 25px;
         }
 
-        /* КАРТИНКА С ФОТО */
         .dresscode-image-container {
             position: relative;
             width: 100%;
@@ -532,9 +502,6 @@
             filter: grayscale(20%) brightness(1.05); 
         }
 
-        /* =========================================
-           МЕСТО ПРОВЕДЕНИЯ
-           ========================================= */
         .location-section {
             padding: 100px 20px;
             text-align: center;
@@ -612,9 +579,6 @@
             transform: translateY(-2px);
         }
 
-        /* =========================================
-           ТАЙМЕР ОБРАТНОГО ОТСЧЕТА
-           ========================================= */
         .countdown-section {
             padding: 80px 20px;
             text-align: center;
@@ -677,9 +641,6 @@
             opacity: 0.5;
         }
 
-        /* =========================================
-           ФОРМА RSVP
-           ========================================= */
         .rsvp-section {
             padding: 100px 20px;
             text-align: center;
@@ -823,9 +784,6 @@
             text-align: center;
         }
 
-        /* =========================================
-           КОНТАКТЫ
-           ========================================= */
         .contacts-section {
             padding: 80px 20px;
             text-align: center;
@@ -913,9 +871,6 @@
             font-weight: 500;
         }
 
-        /* =========================================
-           АНИМАЦИИ
-           ========================================= */
         @keyframes heartbeat-calendar {
             0% { transform: translate(-50%, -50%) scale(1); }
             15% { transform: translate(-50%, -50%) scale(1.15); }
@@ -940,9 +895,6 @@
             70% { transform: scale(1); }
         }
 
-        /* =========================================
-           АДАПТИВ (МОБИЛЬНАЯ ВЕРСИЯ)
-           ========================================= */
         @media (max-width: 600px) {
             .teaser-love { font-size: 64px; }
             .double-heart-btn { width: 110px; height: 110px; }
@@ -1012,13 +964,11 @@
 </head>
 <body>
 
-    <!-- ВИДЕО-ФОН -->
     <video class="video-background" autoplay loop muted playsinline poster="fon.jpg">
         <source src="silk-video.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
-    <!-- МУЗЫКА -->
     <audio id="bgMusic" loop preload="none" src="music.mp3"></audio>
 
     <section id="teaser">
@@ -1056,7 +1006,7 @@
 
     <section class="invitation-text-section section-overlay">
         <div class="text-container">
-            <h2 class="greeting-title">Дорогие<br><span id="guestNames">Константин и София</span></h2>
+            <h2 class="greeting-title"><span id="greetingWord">Дорогие</span><br><span id="guestNames">Константин и София</span></h2>
             
             <p class="invite-text">
                 Совсем скоро состоится очень важное и радостное для нас событие — наша свадьба. Этот день невозможно представить без самых близких для нас людей, мы бы очень хотели, чтобы вы провели его вместе с нами.<br><br>
@@ -1397,16 +1347,23 @@
     </section>
 
     <script>
-        // ЛОГИКА ПЕРСОНАЛИЗАЦИИ ИМЕН (Читает имя из ссылки и расшифровывает её)
+        // ЛОГИКА ПЕРСОНАЛИЗАЦИИ ИМЕН И ОБРАЩЕНИЯ
         const urlParams = new URLSearchParams(window.location.search);
+        
+        // Читаем слово "Дорогие/Дорогой/Дорогая"
+        let greetParam = urlParams.get('greet');
+        if (greetParam) {
+            try {
+                document.getElementById('greetingWord').innerText = decodeURIComponent(greetParam);
+            } catch (e) {}
+        }
+
+        // Читаем имена гостей
         let namesParam = urlParams.get('names');
         if (namesParam) {
             try {
-                namesParam = decodeURIComponent(namesParam);
-            } catch (e) {
-                console.error("Ошибка декодирования", e);
-            }
-            document.getElementById('guestNames').innerText = namesParam;
+                document.getElementById('guestNames').innerText = decodeURIComponent(namesParam);
+            } catch (e) {}
         }
 
         const openBtn = document.getElementById('openBtn');
