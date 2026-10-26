@@ -21,8 +21,18 @@
             color: #3a3530;
             background-color: #e8e4db; 
             overflow-x: hidden;
+            /* БЛОКИРУЕМ ПРОКРУТКУ ДО КЛИКА НА СЕРДЕЧКО */
+            overflow-y: hidden; 
         }
 
+        /* Класс, который включит прокрутку после клика */
+        body.scrollable {
+            overflow-y: auto;
+        }
+
+        /* =========================================
+           ВИДЕО-ФОН (НА ВЕСЬ ЭКРАН)
+           ========================================= */
         .video-background {
             position: fixed;
             top: 0;
@@ -45,6 +55,9 @@
             pointer-events: none;
         }
 
+        /* =========================================
+           ПЛАВАЮЩЕЕ СЕРДЕЧКО
+           ========================================= */
         .floating-heart {
             position: absolute; 
             width: 65px; 
@@ -84,6 +97,9 @@
             text-shadow: 0px 2px 4px rgba(0,0,0,0.3);
         }
 
+        /* =========================================
+           ЭКРАН 1: ОБЛОЖКА (С ДВУМЯ СЕРДЦАМИ)
+           ========================================= */
         #teaser {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100vh;
@@ -94,11 +110,12 @@
             text-align: center;
             z-index: 100; 
             transition: opacity 1s ease, visibility 1s ease;
+            background-color: #e8e4db; /* Плотный фон, чтобы текст не просвечивал */
         }
 
         #teaser.hidden { opacity: 0; visibility: hidden; }
 
-        .teaser-content { animation: fadeIn 1.5s ease; }
+        .teaser-content { animation: fadeIn 1.5s ease; transition: opacity 0.3s ease; }
 
         .teaser-small-text {
             font-size: 12px;
@@ -126,7 +143,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
             animation: heartbeat-fingerprint 1.5s ease-in-out infinite;
         }
 
@@ -151,11 +168,26 @@
             font-weight: 500;
         }
 
+        /* СТИЛИ ДЛЯ РАЗЛЕТАЮЩИХСЯ ОСКОЛКОВ */
+        .shatter-particle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #5a1a1b;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease-out;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* =========================================
+           ЭКРАН 2: ГЛАВНОЕ ПРИГЛАШЕНИЕ
+           ========================================= */
         #main-invite {
             position: relative;
             min-height: 100vh;
@@ -210,12 +242,18 @@
             color: #5a1a1b;
         }
 
+        /* =========================================
+           ОБЩИЕ СТИЛИ ДЛЯ СЕКЦИЙ
+           ========================================= */
         .section-overlay {
             position: relative;
             background-color: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(3px); 
         }
 
+        /* =========================================
+           ТЕКСТ ПРИГЛАШЕНИЯ
+           ========================================= */
         .invitation-text-section {
             padding: 100px 20px;
         }
@@ -237,7 +275,6 @@
             color: #5a1a1b;
             margin-bottom: 40px;
             line-height: 1.4;
-            /* Убрали text-transform: uppercase, чтобы имена выглядели красиво */
         }
 
         .invite-text {
@@ -247,6 +284,9 @@
             font-weight: 400;
         }
 
+        /* =========================================
+           ПРОГРАММА ДНЯ
+           ========================================= */
         .program-section {
             padding: 80px 20px;
             overflow: hidden;
@@ -267,6 +307,7 @@
             margin-bottom: 40px;
         }
 
+        /* КАЛЕНДАРЬ */
         .styled-calendar {
             text-align: center;
             color: #2a2520;
@@ -332,6 +373,7 @@
             animation: heartbeat-calendar 1.5s ease-in-out infinite;
         }
 
+        /* ТАЙМЛАЙН */
         .timeline {
             position: relative;
             padding: 20px 0;
@@ -413,6 +455,9 @@
             color: #555;
         }
 
+        /* =========================================
+           ДЕТАЛИ ДНЯ (ФОТО)
+           ========================================= */
         .details-section {
             padding: 100px 20px;
             text-align: center;
@@ -451,12 +496,15 @@
             max-width: 450px;
             height: auto;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            /* ГЛУБОКАЯ ТЕНЬ БЕЗ РАМКИ */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 15px rgba(0, 0, 0, 0.15); 
             margin: 10px auto 30px;
             display: block;
-            border: 8px solid #fff; 
         }
 
+        /* =========================================
+           ДРЕСС-КОД (ФОТО)
+           ========================================= */
         .dresscode-section {
             padding: 100px 20px;
             text-align: center;
@@ -491,8 +539,8 @@
             margin: 40px auto; 
             border-radius: 12px; 
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15); 
-            border: 6px solid #fff; 
+            /* ГЛУБОКАЯ ТЕНЬ БЕЗ РАМКИ */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 10px 15px rgba(0, 0, 0, 0.15); 
         }
 
         .dresscode-image-container img {
@@ -502,6 +550,9 @@
             filter: grayscale(20%) brightness(1.05); 
         }
 
+        /* =========================================
+           МЕСТО ПРОВЕДЕНИЯ
+           ========================================= */
         .location-section {
             padding: 100px 20px;
             text-align: center;
@@ -579,6 +630,9 @@
             transform: translateY(-2px);
         }
 
+        /* =========================================
+           ТАЙМЕР ОБРАТНОГО ОТСЧЕТА
+           ========================================= */
         .countdown-section {
             padding: 80px 20px;
             text-align: center;
@@ -641,6 +695,9 @@
             opacity: 0.5;
         }
 
+        /* =========================================
+           ФОРМА RSVP
+           ========================================= */
         .rsvp-section {
             padding: 100px 20px;
             text-align: center;
@@ -784,6 +841,9 @@
             text-align: center;
         }
 
+        /* =========================================
+           КОНТАКТЫ
+           ========================================= */
         .contacts-section {
             padding: 80px 20px;
             text-align: center;
@@ -871,6 +931,9 @@
             font-weight: 500;
         }
 
+        /* =========================================
+           АНИМАЦИИ
+           ========================================= */
         @keyframes heartbeat-calendar {
             0% { transform: translate(-50%, -50%) scale(1); }
             15% { transform: translate(-50%, -50%) scale(1.15); }
@@ -895,6 +958,9 @@
             70% { transform: scale(1); }
         }
 
+        /* =========================================
+           АДАПТИВ (МОБИЛЬНАЯ ВЕРСИЯ)
+           ========================================= */
         @media (max-width: 600px) {
             .teaser-love { font-size: 64px; }
             .double-heart-btn { width: 110px; height: 110px; }
@@ -964,11 +1030,13 @@
 </head>
 <body>
 
+    <!-- ВИДЕО-ФОН -->
     <video class="video-background" autoplay loop muted playsinline poster="fon.jpg">
         <source src="silk-video.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
+    <!-- МУЗЫКА -->
     <audio id="bgMusic" loop preload="none" src="music.mp3"></audio>
 
     <section id="teaser">
@@ -1308,9 +1376,10 @@
     <section class="contacts-section section-overlay">
         <div class="contacts-container">
             <h2 class="contacts-title">Остались вопросы?</h2>
-            <p class="contacts-subtitle">Свяжитесь с нами любым удобным способом</p>
+            <p class="contacts-subtitle">Свяжитесь с нами или с нашим ведущим</p>
             
             <div class="contact-grid">
+                <!-- Карточка Ивана -->
                 <div class="contact-person">
                     <h3>Иван</h3>
                     <a href="https://t.me/mythologicalhop" target="_blank" class="contact-item">
@@ -1327,6 +1396,7 @@
                     </a>
                 </div>
 
+                <!-- Карточка Милены -->
                 <div class="contact-person">
                     <h3>Милена</h3>
                     <a href="https://t.me/mimi_milkaa" target="_blank" class="contact-item">
@@ -1342,30 +1412,61 @@
                         <span class="contact-text">+7 931 320 5154</span>
                     </a>
                 </div>
+
+                <!-- НОВАЯ КАРТОЧКА ВЕДУЩЕГО -->
+                <div class="contact-person">
+                    <h3>Ведущий</h3>
+                    <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 15px; font-style: italic;">
+                        Готовите сюрприз? Свяжитесь с ведущим, чтобы он учел его в сценарии!
+                    </p>
+                    
+                    <a href="https://t.me/Tarusov_Vanya" target="_blank" class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        <span class="contact-text">@Tarusov_Vanya</span>
+                    </a>
+                    
+                    <a href="https://vk.ru/aktio" target="_blank" class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.95 7.66c-.16-.53-.66-.84-1.3-.84h-3.1c-.66 0-1.13.32-1.39.93-.66 1.64-1.6 3.1-2.44 4.16-.77.98-1.46 1.34-1.86 1.34-.4 0-.55-.36-.55-1.03V7.66c0-.53-.43-.96-.96-.96h-3.9c-.53 0-.96.43-.96.96v4.9c0 .95-.57 1.42-1.05 1.42-.57 0-1.02-.47-1.02-1.42V7.66c0-.53-.43-.96-.96-.96H2.67c-.53 0-.96.43-.96.96v5.14c0 3.33 2.7 6.04 6.04 6.04 2.36 0 4.48-1.35 5.52-3.36.82 1.62 2.08 3.1 3.9 3.1 3.66 0 6.23-3.3 6.23-7.1v-1.82z"/></svg>
+                        <span class="contact-text">ВКонтакте</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <script>
-        // ЛОГИКА ПЕРСОНАЛИЗАЦИИ ИМЕН И ОБРАЩЕНИЯ
+        // =========================================
+        // 1. ПЕРСОНАЛИЗАЦИЯ ИМЕН И ОБРАЩЕНИЯ
+        // =========================================
         const urlParams = new URLSearchParams(window.location.search);
-        
-        // Читаем слово "Дорогие/Дорогой/Дорогая"
-        let greetParam = urlParams.get('greet');
-        if (greetParam) {
-            try {
-                document.getElementById('greetingWord').innerText = decodeURIComponent(greetParam);
-            } catch (e) {}
-        }
-
-        // Читаем имена гостей
         let namesParam = urlParams.get('names');
+        
         if (namesParam) {
             try {
-                document.getElementById('guestNames').innerText = decodeURIComponent(namesParam);
-            } catch (e) {}
+                namesParam = decodeURIComponent(namesParam);
+                
+                // Если в ссылке есть разделитель | (Дорогой|Владислав)
+                if (namesParam.includes('|')) {
+                    const parts = namesParam.split('|');
+                    document.getElementById('greetingWord').innerText = parts[0];
+                    document.getElementById('guestNames').innerText = parts[1];
+                } 
+                // Если ссылка старая (с &greet=)
+                else {
+                    let greetParam = urlParams.get('greet');
+                    if (greetParam) {
+                        document.getElementById('greetingWord').innerText = decodeURIComponent(greetParam);
+                    }
+                    document.getElementById('guestNames').innerText = namesParam;
+                }
+            } catch (e) {
+                console.error("Ошибка", e);
+            }
         }
 
+        // =========================================
+        // 2. ЭФФЕКТ РАССЫПАЮЩЕГОСЯ СЕРДЦА И ВКЛЮЧЕНИЕ САЙТА
+        // =========================================
         const openBtn = document.getElementById('openBtn');
         const teaser = document.getElementById('teaser');
         const mainInvite = document.getElementById('main-invite');
@@ -1373,22 +1474,67 @@
         const bgMusic = document.getElementById('bgMusic');
 
         openBtn.addEventListener('click', () => {
-            teaser.classList.add('hidden');
-            
+            // Координаты сердечка
+            const rect = openBtn.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            // Скрываем сердечко и текст
+            openBtn.style.opacity = '0';
+            document.querySelector('.teaser-content').style.opacity = '0';
+
+            // Создаем 40 частиц (осколков)
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('shatter-particle');
+                
+                particle.style.left = `${centerX}px`;
+                particle.style.top = `${centerY}px`;
+                
+                const size = Math.random() * 8 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                document.body.appendChild(particle);
+
+                // Анимация разлета
+                setTimeout(() => {
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 150 + 50;
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+
+                    particle.style.transform = `translate(${x}px, ${y}px) scale(0) rotate(${Math.random() * 360}deg)`;
+                    particle.style.opacity = '0';
+                }, 10);
+
+                // Удаление частиц
+                setTimeout(() => particle.remove(), 1000);
+            }
+
+            // РАЗБЛОКИРУЕМ ПРОКРУТКУ САЙТА
+            document.body.classList.add('scrollable');
+
+            // Включаем музыку
             if (bgMusic) {
                 bgMusic.volume = 0.5;
                 bgMusic.play().catch(error => {
-                    console.log("Автовоспроизведение заблокировано браузером:", error);
+                    console.log("Музыка заблокирована:", error);
                 });
             }
 
+            // Показываем приглашение
             setTimeout(() => {
+                teaser.classList.add('hidden');
                 mainInvite.classList.add('visible');
                 floatingHeart.classList.add('visible');
                 updateHeartPosition(); 
-            }, 300);
+            }, 400); 
         });
 
+        // =========================================
+        // 3. АНИМАЦИЯ ПРОГРАММЫ ДНЯ
+        // =========================================
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -1408,6 +1554,9 @@
             observer.observe(block);
         });
 
+        // =========================================
+        // 4. ДВИЖЕНИЕ СЕРДЕЧКА ПО ЛИНИИ
+        // =========================================
         const timelineContainer = document.getElementById('timelineContainer');
         const svg = document.querySelector('.timeline-svg');
         const path = document.getElementById('timelinePath');
@@ -1442,6 +1591,9 @@
         window.addEventListener('scroll', updateHeartPosition);
         window.addEventListener('resize', updateHeartPosition);
 
+        // =========================================
+        // 5. ОТПРАВКА ФОРМЫ RSVP
+        // =========================================
         const rsvpForm = document.getElementById('rsvpForm');
         const extraFields = document.getElementById('extraFields');
         const formStatus = document.getElementById('formStatus');
@@ -1501,6 +1653,9 @@
             }
         });
 
+        // =========================================
+        // 6. ТАЙМЕР ОБРАТНОГО ОТСЧЕТА
+        // =========================================
         const weddingDate = new Date(2027, 6, 28, 12, 0, 0).getTime();
 
         const countdownFunction = setInterval(function() {
